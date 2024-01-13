@@ -1,4 +1,17 @@
 @extends('pd.layouts.app')
+@push('css')
+    <style>
+      .select2-container .select2-selection--single {
+        height: 50px;
+        font-size: 30px;
+        align-content: center;
+        justify-items: center;
+        justify-content: center;
+        padding-top: 10px;
+        margin-top: 10px;
+      }
+    </style>
+@endpush
 @section('content')
   <main class="bg-dark">
     <section class="py-1 text-center container">
@@ -47,10 +60,10 @@
                     <form>
                       <div class="mb-3">
                         <div class="bg-warning pt-4 text-center pb-1">
-                          <h6>
+                          <h2>
 
-                            <strong class="text-dark" id="faq_respuesta">-------</strong>
-                          </h6>
+                            <strong class="text-dark text-wrap" id="faq_respuesta">-------</strong>
+                          </h2>
                         </div>
                       </div>
                     </form>

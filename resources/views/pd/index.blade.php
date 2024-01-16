@@ -1,4 +1,4 @@
-@extends('pd.layouts.app')
+@extends('layouts.public.app')
 @push('css')
 <style>
   .card {

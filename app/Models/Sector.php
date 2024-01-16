@@ -11,17 +11,21 @@ class Sector extends Model
 
   protected $table = 'sector';
 
+  public function getImg() {
+    return $this->imagen ? asset('pd/img/sector/'.$this->imagen) : asset('pd/img/sector/piso-inicial.jpg');
+  }
+
+  public function getName() {
+    return str_replace('_',' ', $this->nombre);
+  }
 
   public function get_raw() {
-
-    $img = $this->imagen ? asset('pd/img/sector/'.$this->imagen) : asset('pd/img/sector/piso-inicial.jpg');
-
     return [
       'id' => $this->id,
       'ubicacion' => $this->ubicacion,
       'nombre' => $this->nombre,
       'piso' => $this->piso,
-      'imagen' => $img,
+      'imagen' => $this->getImg(),
       'descripcion' => $this->descripcion,
     ];
   }

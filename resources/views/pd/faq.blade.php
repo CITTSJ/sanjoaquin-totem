@@ -1,4 +1,4 @@
-@extends('pd.layouts.app')
+@extends('layouts.public.app')
 @push('css')
     <style>
       .select2-container .select2-selection--single {

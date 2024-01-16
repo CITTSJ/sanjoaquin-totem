@@ -5,7 +5,7 @@ INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALU
 INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALUES('Docente_','ESTEBAN_DE_JESUS_VERA_CORTEZ','ES.VERAC@PROFESOR.DUOC.CL','','','Docente','image14.png');
 INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALUES('Administrativo/_Colaborador_','ROBERTO_MATIAS_BAEZ_TAPIA','RBAEZT@DUOC.CL','Jefe(a)deComunicaciones','DirecciónPiso4','Administrativo/Colaborador','image15.png');
 INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALUES('Administrativo/_Colaborador_','HERNAN_RODRIGO_MUJICA_CORNEJO','HMUJICA@DUOC.CL','Coordinador(a)GeneralVespertino','CSAPiso1','Administrativo/Colaborador','image16.png');
-INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALUES('Docente_','YOHANA_MARGOT_VEJAR_LEAL','YO.VEJAR@PROFESOR.DUOC.CL','','','Docente','image16.png');
+INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALUES('Docente_','YOHANA_MARGOT_VEJAR_LEAL','YO.VEJAR@PROFESOR.DUOC.CL','','','Docente','image17.png');
 INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALUES('Docente_','DANIEL_ALEJANDRO_VARGAS_QUINTEROS','DAN.VARGAS@PROFESOR.DUOC.CL','','','Docente','image18.png');
 INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALUES('Docente_','GABRIEL_EDUARDO_VALLEJOS_YAÑEZ','GA.VALLEJ@PROFESOR.DUOC.CL','','','Docente','image19.png');
 INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALUES('Docente_','GONZALO_PATRICIO_VALENZUELA_PIÑEIRO','G.VALENZUELAPI@PROFESOR.DUOC.CL','','','Docente','image20.png');
@@ -222,7 +222,7 @@ INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALU
 INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALUES('Docente_','MONICA_NATHALIA_PANES_MARTINEZ','M.PANES@PROFESOR.DUOC.CL','','','Docente','image231.png');
 INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALUES('Docente_','JAIME_GONZALO_PARRA_MONTOYA','JA.PARRAM@PROFESOR.DUOC.CL','','','Docente','image232.png');
 INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALUES('Docente_','GUSTAVO_IGNACIO_PARRA_GUTIERREZ','GU.PARRA@PROFESOR.DUOC.CL','','','Docente','image233.png');
-INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALUES('Administrativo/_Colaborador_','','','Coordinador(a)deAsuntosEstudiantiles','PuntoEstudiantil/PastoralPiso1','Administrativo/Colaborador','image.png');
+-- INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALUES('Administrativo/_Colaborador_','','','Coordinador(a)deAsuntosEstudiantiles','PuntoEstudiantil/PastoralPiso1','Administrativo/Colaborador','image.png');
 INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALUES('Administrativo/_Colaborador_','JOCELYN_LIZANA','JLIZANAV@DUOC.CL','AsistentedePrácticasdeSalud','CSAPiso1','Administrativo/Colaborador','image.png');
 INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALUES('Administrativo/_Colaborador_','FERNANDO_LEIVA','FLEIVAB@DUOC.CL','AsistentedePrácticasdeSalud','CSAPiso1','Administrativo/Colaborador','image.png');
 INSERT INTO personal (tipo,nombre, correo, cargo, ubicacion,puesto, imagen) VALUES('Administrativo/_Colaborador_','PAULA_LEIVA','PLEIVA@DUOC.CL','Coord.Misiones,TrabajoySolidaridad','PuntoEstudiantil/PastoralPiso1','Administrativo/Colaborador','image.png');

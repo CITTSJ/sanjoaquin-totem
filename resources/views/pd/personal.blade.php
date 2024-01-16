@@ -1,4 +1,4 @@
-@extends('pd.layouts.app')
+@extends('layouts.public.app')
 @section('content')
   <main class="bg-dark">
     <section class="py-1 text-center container">

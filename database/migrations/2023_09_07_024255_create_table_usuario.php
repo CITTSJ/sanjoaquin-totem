@@ -30,14 +30,14 @@ return new class extends Migration
         });
 
 
-        // $u = new Usuario();
-        // $u->nombre = 'Benjamin';
-        // $u->apellido_paterno = 'Mora';
-        // $u->apellido_materno = 'Torres';
-        // $u->correo = 'bej.mora@profesor.duoc.cl';
-        // $u->password = hash('sha256', '199191919192AASDDS');
-        // $u->tipo_usuario = 1;
-        // $u->save();
+        $u = new Usuario();
+        $u->nombre = 'Hernan';
+        $u->apellido_paterno = 'Mujica';
+        $u->apellido_materno = 'Cornejo';
+        $u->correo = 'hmujica@duoc.cl';
+        $u->password = hash('sha256', 'hmujica2023');
+        $u->tipo_usuario = 1;
+        $u->save();
 
         // $faker = FakerFactory::create();
 

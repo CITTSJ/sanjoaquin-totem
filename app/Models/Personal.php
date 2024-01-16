@@ -11,17 +11,19 @@ class Personal extends Model
 
   protected $table = 'personal';
 
-
-  public function get_raw() {
-
+  public function getImg() {
     $img = $this->imagen ? asset('pd/img/media/'.$this->imagen) : asset('pd/img/media/default.png');
 
+    return $img;
+  }
+
+  public function get_raw() {
     return [
       'id' => $this->id,
       'nombre' => $this->nombre,
       'cargo' => $this->cargo,
       'correo' => $this->correo,
-      'imagen' => $img,
+      'imagen' => $this->getImg(),
       'puesto' => $this->puesto,
       'ubicacion' => $this->ubicacion,
     ];

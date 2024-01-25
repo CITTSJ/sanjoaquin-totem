@@ -36,7 +36,7 @@
           $table->string('descripcion')->nullable();
           $table->boolean('mostrar')->default(true);
           $table->boolean('activo')->default(true); --}}
-          <td><img src="{{ $s->getImg() }}" alt="" width="80px"></td>
+          <td><img src="{{ asset($s->getPhoto()) }}" alt="" width="80px"></td>
           <td>{{ $s->piso }}</td>
           <td><small>{{ $s->getName() }}</small></td>
           <td><small>{{ $s->ubicacion }}</small></td>

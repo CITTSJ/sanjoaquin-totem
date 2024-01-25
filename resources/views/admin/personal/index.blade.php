@@ -11,6 +11,7 @@
 
 <h1 class="mt-4">Personal</h1>
 @include('admin.personal._tab')
+
 <div class="card mb-4">
   <div class="card-body table-resonsive">
     <table id="datatablesSimple" class="table table-sm table-hover">
@@ -26,9 +27,10 @@
       <tbody>
         @foreach ($personals as $p)
         <tr>
-          <td><img src="{{ $p->getImg() }}" alt="" width="80px"></td>
+          <td><img src="{{ asset($p->getPhoto()) }}" alt="" width="80px"></td>
           <td><small>{{ $p->nombre }}</small></td>
-          <td>{{ $p->correo }} {{ $p->id }}</td>
+          <td>{{ $p->correo }}</td>
+
           {{-- <td>{{ $p->tipo }}</td> --}}
           {{-- <td>{{ $p->cargo }}</td> --}}
           {{-- <td>{{ $p->ubicacion }}</td> --}}

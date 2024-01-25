@@ -4,6 +4,7 @@ namespace App\Http\Controllers\PD;
 
 use App\Http\Controllers\Controller;
 use App\Models\Personal;
+use App\Services\ImportImage;
 use Illuminate\Http\Request;
 
 class PersonalController extends Controller
@@ -22,26 +23,32 @@ class PersonalController extends Controller
     return view('admin.personal.create');
   }
 
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
-  public function store(Request $request)
-  {
-    //
-  }
+  public function store(Request $request) {
+    $p = new Personal();
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function show($id)
-  {
-    //
+    $nombre = $request->input('nombre');
+    $correo = $request->input('email');
+    $puesto = $request->input('puesto');
+    $mostrar = $request->input('mostrar') == 'on' ? true : false;
+
+    $p->nombre = $nombre;
+    $p->correo = $correo;
+    $p->puesto = $puesto;
+    $p->mostrar = $mostrar;
+
+    if(!empty($request->file('image'))){
+      $request->validate([
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      ]);
+
+      $filename = time();
+      $folder = 'public/assets/personal/';
+      $p->imagen = ImportImage::save($request, 'image', $filename, $folder);
+    }
+
+    $p->save();
+
+    return redirect()->route('admin.personal.index')->with('success', 'Personal creado correctamente');
   }
 
   public function edit($id) {
@@ -49,26 +56,30 @@ class PersonalController extends Controller
     return view('admin.personal.edit', compact('p'));
   }
 
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request, $id)
-  {
-    //
+  public function update(Request $request, $id) {
+    $p = Personal::findOrFail($id);
+    $p->nombre = $request->input('nombre');
+    $p->correo = $request->input('email');
+    $p->puesto = $request->input('puesto');
+    $p->mostrar = $request->input('mostrar') == 'on' ? true : false;
+    $p->update();
+
+    return back()->with('success', 'Personal actualizado correctamente');
   }
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function destroy($id)
-  {
-    //
+  public function updateImg(Request $request, $id) {
+    $p = Personal::findOrFail($id);
+
+    if(!empty($request->file('image'))){
+      $request->validate([
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      ]);
+
+      $filename = $p->id . '' . time();
+      $folder = 'public/assets/personal/';
+      $p->imagen = ImportImage::save($request, 'image', $filename, $folder);
+      $p->update();
+    }
+    return back()->with('success', 'Personal actualizado correctamente');
   }
 }

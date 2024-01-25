@@ -1,136 +1,53 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 @push('css')
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+
 <style>
 </style>
 @endpush
 
 @section('content')
-  <h2>Section title</h2>
-  <div class="table-responsive small">
-    <table class="table table-striped table-sm">
+
+<h1 class="mt-4">Preguntas frecuentes</h1>
+@include('admin.faq._tab')
+<div class="card mb-4">
+  <div class="card-body table-resonsive">
+    <table id="datatablesSimple" class="table table-sm table-hover">
       <thead>
-        <tr>Dashboard
-          <th scope="col">#</th>
-          <th scope="col">Header</th>
-          <th scope="col">Header</th>
-          <th scope="col">Header</th>
-          <th scope="col">Header</th>
+        <tr>
+          <th>Preguntas</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
+        @foreach ($preguntas as $p)
         <tr>
-          <td>1,001</td>
-          <td>random</td>
-          <td>data</td>
-          <td>placeholder</td>
-          <td>text</td>
+          {{-- <td><img src="{{ asset($p->getPhoto()) }}" alt="" width="80px"></td> --}}
+          {{-- <td><small>{{ $p->nombre }}</small></td> --}}
+          {{-- <td>{{ $p->correo }}</td> --}}
+
+          {{-- <td>{{ $p->tipo }}</td> --}}
+          {{-- <td>{{ $p->cargo }}</td> --}}
+          {{-- <td>{{ $p->ubicacion }}</td> --}}
+          <td>{{ $p->pregunta }}</td>
+          <td>
+            <a href="{{ route('admin.faq.edit', $p->id ) }}" class="btn btn-sm btn-success">Editar</a>
+          </td>
         </tr>
-        <tr>
-          <td>1,002</td>
-          <td>placeholder</td>
-          <td>irrelevant</td>
-          <td>visual</td>
-          <td>layout</td>
-        </tr>
-        <tr>
-          <td>1,003</td>
-          <td>data</td>
-          <td>rich</td>
-          <td>dashboard</td>
-          <td>tabular</td>
-        </tr>
-        <tr>
-          <td>1,003</td>
-          <td>information</td>
-          <td>placeholder</td>
-          <td>illustrative</td>
-          <td>data</td>
-        </tr>
-        <tr>
-          <td>1,004</td>
-          <td>text</td>
-          <td>random</td>
-          <td>layout</td>
-          <td>dashboard</td>
-        </tr>
-        <tr>
-          <td>1,005</td>
-          <td>dashboard</td>
-          <td>irrelevant</td>
-          <td>text</td>
-          <td>placeholder</td>
-        </tr>
-        <tr>
-          <td>1,006</td>
-          <td>dashboard</td>
-          <td>illustrative</td>
-          <td>rich</td>
-          <td>data</td>
-        </tr>
-        <tr>
-          <td>1,007</td>
-          <td>placeholder</td>
-          <td>tabular</td>
-          <td>information</td>
-          <td>irrelevant</td>
-        </tr>
-        <tr>
-          <td>1,008</td>
-          <td>random</td>
-          <td>data</td>
-          <td>placeholder</td>
-          <td>text</td>
-        </tr>
-        <tr>
-          <td>1,009</td>
-          <td>placeholder</td>
-          <td>irrelevant</td>
-          <td>visual</td>
-          <td>layout</td>
-        </tr>
-        <tr>
-          <td>1,010</td>
-          <td>data</td>
-          <td>rich</td>
-          <td>dashboard</td>
-          <td>tabular</td>
-        </tr>
-        <tr>
-          <td>1,011</td>
-          <td>information</td>
-          <td>placeholder</td>
-          <td>illustrative</td>
-          <td>data</td>
-        </tr>
-        <tr>
-          <td>1,012</td>
-          <td>text</td>
-          <td>placeholder</td>
-          <td>layout</td>
-          <td>dashboard</td>
-        </tr>
-        <tr>
-          <td>1,013</td>
-          <td>dashboard</td>
-          <td>irrelevant</td>
-          <td>text</td>
-          <td>visual</td>
-        </tr>
-        <tr>
-          <td>1,014</td>
-          <td>dashboard</td>
-          <td>illustrative</td>
-          <td>rich</td>
-          <td>data</td>
-        </tr>
-        <tr>
-          <td>1,015</td>
-          <td>random</td>
-          <td>tabular</td>
-          <td>information</td>
-          <td>text</td>
-        </tr>
+        @endforeach
       </tbody>
     </table>
   </div>
+</div>
+
 @endsection
+@push('js')
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+
+<script>
+  $(document).ready( function () {
+    $('#datatablesSimple').DataTable();
+} );
+</script>
+@endpush

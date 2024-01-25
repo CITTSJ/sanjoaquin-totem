@@ -8,7 +8,10 @@ use App\Http\Controllers\PD\PersonalController;
 use App\Http\Controllers\PD\SectorController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [PDHomeController::class, 'index'])->name('root');
+Route::get('/', [AuthController::class, 'index'])->name('root');
+
+
+// Route::get('/', [PDHomeController::class, 'index'])->name('root');
 Route::get('personal', [PDHomeController::class, 'personal'])->name('personal');
 Route::get('faq', [PDHomeController::class, 'faq'])->name('faq');
 Route::get('sector', [PDHomeController::class, 'sector'])->name('sector');
@@ -24,9 +27,11 @@ Route::middleware('auth.user')->group( function () {
 
   Route::get('admin/personal_eliminado', [PersonalController::class, 'indexDelete'])->name('admin.personal.indexDelete');
   Route::resource('admin/personal', PersonalController::class)->names('admin.personal');
+  Route::put('admin/personal/{id}/img', [PersonalController::class, 'updateImg'])->name('admin.personal.update.img');
 
   Route::get('admin/sector_eliminado', [SectorController::class, 'indexDelete'])->name('admin.sector.indexDelete');
   Route::resource('admin/sector', SectorController::class)->names('admin.sector');
+  Route::put('admin/sector/{id}/img', [SectorController::class, 'updateImg'])->name('admin.sector.update.img');
 
   Route::get('admin/faq_eliminado', [FaqController::class, 'indexDelete'])->name('admin.faq.indexDelete');
   Route::resource('admin/faq', FaqController::class)->names('admin.faq');

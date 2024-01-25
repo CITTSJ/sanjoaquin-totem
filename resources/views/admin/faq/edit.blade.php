@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 @push('css')
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<link href="{{ asset('assets/summernote-lite.min.css') }}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -49,7 +49,7 @@
 
 @endsection
 @push('js')
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script src="{{ asset('assets/summernote-lite.min.js') }}"></script>
 
 <script>
   $('#summernote').summernote({

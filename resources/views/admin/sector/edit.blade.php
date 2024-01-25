@@ -1,8 +1,7 @@
 @extends('layouts.admin.app')
 @push('css')
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
-
+<link rel="stylesheet" href="{{ asset('assets/fancybox.css') }}">
 <style>
 
 
@@ -113,9 +112,8 @@
 </div>
 @endsection
 @push('js')
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script src="{{ asset('assets/fancybox.umd.js') }}"></script>
 <script src="{{ asset('admin/js/preview.js') }}"></script>
-
 <script>
   Fancybox.bind('[data-fancybox="gallery"]', {
   });

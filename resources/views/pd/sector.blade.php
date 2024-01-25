@@ -2,7 +2,9 @@
 @push('css')
 {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/zoomist@2/zoomist.css" /> --}}
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/> --}}
+
+<link rel="stylesheet" href="{{ asset('assets/fancybox.css') }}">
 
 <style>
   .zoomist-container {
@@ -120,7 +122,8 @@
   </main>
 @endsection
 @push('js')
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  {{-- <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script> --}}
+  <script src="{{ asset('assets/fancybox.umd.js')}}"></script>
 
     {{-- <script src="https://cdn.jsdelivr.net/npm/zoomist@2/zoomist.umd.js"></script> --}}
     <script>

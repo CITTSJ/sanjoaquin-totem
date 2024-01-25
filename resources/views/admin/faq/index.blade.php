@@ -1,8 +1,7 @@
 @extends('layouts.admin.app')
 @push('css')
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
-
+<link rel="stylesheet" href="{{ asset('assets/jquery.dataTables.css') }}">
 <style>
 </style>
 @endpush
@@ -43,8 +42,7 @@
 
 @endsection
 @push('js')
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
-
+<script src="{{ asset('assets/jquery.dataTables.js') }}"></script>
 <script>
   $(document).ready( function () {
     $('#datatablesSimple').DataTable();

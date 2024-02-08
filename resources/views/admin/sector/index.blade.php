@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 @push('css')
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+<link rel="stylesheet" href="{{ asset('assets/jquery.dataTables.css') }}" />
 
 <style>
 </style>
@@ -36,7 +36,7 @@
           $table->string('descripcion')->nullable();
           $table->boolean('mostrar')->default(true);
           $table->boolean('activo')->default(true); --}}
-          <td><img src="{{ $s->getImg() }}" alt="" width="80px"></td>
+          <td><img src="{{ asset($s->getPhoto()) }}" alt="" width="80px"></td>
           <td>{{ $s->piso }}</td>
           <td><small>{{ $s->getName() }}</small></td>
           <td><small>{{ $s->ubicacion }}</small></td>
@@ -56,8 +56,7 @@
 
 @endsection
 @push('js')
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
-
+<script src="{{ asset('assets/jquery.dataTables.js') }}"></script>
 <script>
   $(document).ready( function () {
     $('#datatablesSimple').DataTable();

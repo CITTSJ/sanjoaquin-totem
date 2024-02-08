@@ -10,7 +10,7 @@
   <div class="card-body table-resonsive">
     <div class="container">
       <div class="row">
-        <form action="{{ route('admin.personal.store') }}" method="POST">
+        <form action="{{ route('admin.personal.store') }}" method="POST" class="form-submit" enctype="multipart/form-data" class="form-submit">
           @csrf
           <div class="col-md-6">
             <div class="card border-primary">
@@ -31,10 +31,22 @@
                     <option value="Docente">Docente</option>
                   </select>
                 </div>
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                   <label for="" class="form-label">Imagen</label>
                   <input type="file" class="form-control" name="" id="" placeholder=""/>
+                </div> --}}
+
+                <div class="mb-3">
+                  <label class="form-label" for="image">Imagen<label>
                 </div>
+                <div class="mb-3">
+                  <input type="file" class="form-control" name="image" accept="image/*" onchange="preview(this)" />
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <div id="preview"></div>
+                </div>
+
                 <div class="text-end">
                   <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
@@ -50,5 +62,6 @@
 
 @endsection
 @push('js')
+<script src="{{ asset('admin/js/preview.js') }}"></script>
 
 @endpush

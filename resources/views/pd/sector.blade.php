@@ -2,7 +2,9 @@
 @push('css')
 {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/zoomist@2/zoomist.css" /> --}}
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/> --}}
+
+<link rel="stylesheet" href="{{ asset('assets/fancybox.css') }}">
 
 <style>
   .zoomist-container {
@@ -42,7 +44,7 @@
             <a class="btn btn-warning" href="{{ route('root') }}">
               <img src="{{ asset('pd/img/media/image242.svg') }}" class="" width="30" height="30" alt="">
             </a>
-            Módulo de Auto Atención
+            Módulo de autoatención
           </h1>
           <div class="bg-warning pt-2 text-center pb-1">
             <p class="text-dark">Encuentra tu sala o Area de la sede</p>
@@ -92,15 +94,15 @@
                         </select>
                       </div>
                       <div class="mb-3">
-                        <div class="bg-warning pt-4 text-center pb-1">
-                          <h2 class="text-dark" id="p_piso">--------</h2>
+                        <div class="card bg-warning pt-4 text-center pb-1">
+                          <h1 class="text-dark" id="p_piso">--------</h1>
                         </div>
                       </div>
-                      <div class="mb-3">
+                      {{-- <div class="mb-3">
                         <div class="bg-dark pt-4 text-center pb-1">
                           <h1 class="text-white" id="p_ubicacion">--------</h1>
                         </div>
-                      </div>
+                      </div> --}}
                       {{-- <div class="mb-3">
                         <div class="bg-primary pt-4 text-center pb-1">
                           <p class="text-dark" id="p_descripcion">--------</p>
@@ -120,7 +122,8 @@
   </main>
 @endsection
 @push('js')
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  {{-- <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script> --}}
+  <script src="{{ asset('assets/fancybox.umd.js')}}"></script>
 
     {{-- <script src="https://cdn.jsdelivr.net/npm/zoomist@2/zoomist.umd.js"></script> --}}
     <script>

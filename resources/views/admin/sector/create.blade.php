@@ -10,7 +10,7 @@
   <div class="card-body table-resonsive">
     <div class="container">
       <div class="row">
-        <form action="{{ route('admin.sector.store') }}" method="POST">
+        <form action="{{ route('admin.sector.store') }}"  class="form-submit" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="col-md-6">
             <div class="card border-primary">
@@ -28,17 +28,23 @@
                   <input type="text" class="form-control" name="descripcion" required>
                 </div>
                 <div class="mb-3">
-                  <label for="tipo" class="form-label">Piso</label>
-                  <select class="form-select" name="tipo" id="tipo">
-                    @for ($i = -1; $i < 8; $i++)
+                  <label for="piso" class="form-label">Piso</label>
+                  <select class="form-select" name="piso" id="piso">
+                    @for ($i = -1; $i < 9; $i++)
                       @continue($i == 0)
-                      <option value="{{ $i }}">PISO {{ $i }}</option>
+                      <option value="Piso {{ $i }}">PISO {{ $i }}</option>
                     @endfor
                   </select>
                 </div>
                 <div class="mb-3">
-                  <label for="" class="form-label">Imagen</label>
-                  <input type="file" class="form-control" name="" id="" placeholder=""/>
+                  <label class="form-label" for="image">Imagen<label>
+                </div>
+                <div class="mb-3">
+                  <input type="file" class="form-control" name="image" accept="image/*" onchange="preview(this)" />
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <div id="preview"></div>
                 </div>
                 <div class="text-end">
                   <button type="submit" class="btn btn-primary">Guardar</button>
@@ -55,5 +61,6 @@
 
 @endsection
 @push('js')
+<script src="{{ asset('admin/js/preview.js') }}"></script>
 
 @endpush

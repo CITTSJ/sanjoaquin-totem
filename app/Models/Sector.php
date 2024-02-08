@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Services\Imagen;
+
 
 class Sector extends Model
 {
@@ -11,8 +13,18 @@ class Sector extends Model
 
   protected $table = 'sector';
 
-  public function getImg() {
-    return $this->imagen ? asset('pd/img/sector/'.$this->imagen) : asset('pd/img/sector/piso-inicial.jpg');
+  public function getPhoto(){
+    $folder = "assets/sector";
+    $folder_default = "pd/img/sector/";
+    $imgDefault = $folder_default.'piso-inicial.jpg';
+
+    $img = $this->imagen;
+
+    if (strpos($this->imagen, "image") !== false) {
+      $imgDefault = $folder_default.$this->imagen;
+      $img = null;
+    }
+    return (new Imagen($img, $folder, $imgDefault))->call();
   }
 
   public function getName() {
@@ -25,7 +37,7 @@ class Sector extends Model
       'ubicacion' => $this->ubicacion,
       'nombre' => $this->nombre,
       'piso' => $this->piso,
-      'imagen' => $this->getImg(),
+      'imagen' => asset($this->getPhoto()),
       'descripcion' => $this->descripcion,
     ];
   }

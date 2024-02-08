@@ -9,7 +9,7 @@
     <section class="py-5 text-center container">
         <div class="row py-lg-3">
             <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-light">Módulo de Auto Atención</h1>
+                <h1 class="fw-light">Módulo de autoatención</h1>
                 <img src="{{ asset('pd/img/logo.png') }}" width="100"  alt="">
                 {{-- <p class="lead text-body-secondary">Something short and leading about the collection below—its contents,
                     the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
@@ -30,7 +30,7 @@
 
             <div class="card bg-secondary">
               <div class="card-body">
-                <h4 class="card-title text-center"><strong>Acceso Plantilla Didactica</strong></h4>
+                <h4 class="card-title text-center"><strong>Acceso Plantilla Didáctica</strong></h4>
                 {{-- <p class="card-text">Text</p> --}}
                 <form action="{{ route('login') }}" method="POST">
                   @csrf

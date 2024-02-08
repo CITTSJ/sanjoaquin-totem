@@ -21,7 +21,7 @@
             <a class="btn btn-warning" href="{{ route('root') }}">
               <img src="{{ asset('pd/img/media/image242.svg') }}" class="" width="30" height="30" alt="">
             </a>
-            Módulo de Auto Atención
+            Módulo de autoatención
           </h1>
           <div class="bg-warning pt-2 text-center pb-1">
             <p class="text-dark">Preguntas Frecuentes</p>

@@ -17,69 +17,32 @@ class FaqController extends Controller
     $preguntas = Faq::where('mostrar', false)->get();
     return view('admin.faq.index', compact('preguntas'));
   }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+  public function create() {
+    return view('admin.faq.create');
+  }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+  public function store(Request $request) {
+    $faq = new Faq();
+    $faq->pregunta = $request->input('pregunta');
+    $faq->respuesta = $request->input('respuesta');
+    $faq->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+    return redirect()->route('admin.faq.index')->with('success', 'Pregunta creada correctamente');
+  }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+  public function edit($id) {
+    $faq = Faq::find($id);
+    return view('admin.faq.edit', compact('faq'));
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+  public function update(Request $request, $id) {
+    $faq = Faq::find($id);
+    $faq->pregunta = $request->input('pregunta');
+    $faq->respuesta = $request->input('respuesta');
+    $faq->mostrar = $request->input('mostrar') == 'on' ? true : false;
+    $faq->update();
+
+    return back()->with('success', 'Pregunta actualizada correctamente');
+  }
 }

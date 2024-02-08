@@ -1,8 +1,7 @@
 @extends('layouts.admin.app')
 @push('css')
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
-
+<link rel="stylesheet" href="{{ asset('assets/fancybox.css') }}">
 <style>
 
 
@@ -38,6 +37,7 @@
         <div class="col-md-6">
             <form action="{{ route('admin.sector.update',$s->id) }}" method="POST">
               @csrf
+              @method('PUT')
             <div class="card border-primary">
               <div class="card-body">
                 <div class="mb-3">
@@ -53,12 +53,19 @@
                   <input type="text" class="form-control" name="descripcion" value="{{ $s->descripcion }}" required>
                 </div>
                 <div class="mb-3">
-                  <label for="tipo" class="form-label">Piso</label>
-                  <select class="form-select" name="tipo" id="tipo">
-                    @for ($i = -1; $i < 8; $i++)
+                  <label for="piso" class="form-label">Piso</label>
+                  <select class="form-select" name="piso" id="piso">
+                    @for ($i = -1; $i < 9; $i++)
                       @continue($i == 0)
-                      <option value="{{ $i }}" {{ 'Piso ' . $i == $s->piso ? 'selected' : '' }}>PISO {{ $i }}</option>
+                      <option value="Piso {{ $i }}" {{ 'Piso ' . $i == $s->piso ? 'selected' : '' }}>PISO {{ $i }}</option>
                     @endfor
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="mostrar" class="form-label">Mostrar</label>
+                  <select class="form-select" name="mostrar" id="mostrar">
+                    <option value="on" {{ $s->mostrar ? 'selected' : '' }}>Si</option>
+                    <option value="off" {{ $s->mostrar ? '' : 'selected' }}>No</option>
                   </select>
                 </div>
                 <div class="text-end">
@@ -71,20 +78,26 @@
         <div class="col-md-6">
           <div class="card mb-3">
             <div class="card-body text-center">
-              <a href="{{ asset($s->getImg()) }}" id="a_imagen" data-fancybox="gallery" data-caption="Single image">
-                <img src="{{ asset($s->getImg()) }}" id="p_imagen" class="rounded img-responsive shadow-lg" style="width: 100%; height: 260px;" alt="">
+              <a href="{{ asset($s->getPhoto()) }}" id="a_imagen" data-fancybox="gallery" data-caption="Single image">
+                <img src="{{ asset($s->getPhoto()) }}" id="p_imagen" class="rounded img-responsive shadow-lg" style="width: 100%; height: 260px;" alt="">
               </a>
             </div>
           </div>
-          <form action="{{ route('admin.sector.update',$s->id) }}" method="POST">
+          <form action="{{ route('admin.sector.update.img',$s->id) }}" class="form-submit" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="card border-dark">
               <div class="card-body">
                 <div class="card-title"><strong>Editar imagen</strong></div>
                 <div class="mb-3">
-                  <label for="" class="form-label">Imagen</label>
-                  <input type="file" class="form-control" name="" id="" placeholder=""/>
+                  <label class="form-label" for="image">Imagen<label>
+                </div>
+                <div class="mb-3">
+                  <input type="file" class="form-control" name="image" accept="image/*" onchange="preview(this)" />
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <div id="preview"></div>
                 </div>
                 <div class="text-end">
                   <button type="submit" class="btn btn-primary">Guardar</button>
@@ -99,7 +112,8 @@
 </div>
 @endsection
 @push('js')
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script src="{{ asset('assets/fancybox.umd.js') }}"></script>
+<script src="{{ asset('admin/js/preview.js') }}"></script>
 <script>
   Fancybox.bind('[data-fancybox="gallery"]', {
   });

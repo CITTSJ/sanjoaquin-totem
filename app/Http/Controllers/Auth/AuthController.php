@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Usuario;
-use App\Services\EmailUser;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -13,8 +12,13 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-  public function index() {
+  public function acceso() {
     return view('auth.index');
+  }
+
+
+  public function index() {
+    return view('pd.index');
   }
 
   public function home() {

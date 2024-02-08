@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 @push('css')
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+<link rel="stylesheet" href="{{ asset('assets/jquery.dataTables.css') }}" />
 
 <style>
 </style>
@@ -11,6 +11,7 @@
 
 <h1 class="mt-4">Personal</h1>
 @include('admin.personal._tab')
+
 <div class="card mb-4">
   <div class="card-body table-resonsive">
     <table id="datatablesSimple" class="table table-sm table-hover">
@@ -26,9 +27,10 @@
       <tbody>
         @foreach ($personals as $p)
         <tr>
-          <td><img src="{{ $p->getImg() }}" alt="" width="80px"></td>
+          <td><img src="{{ asset($p->getPhoto()) }}" alt="" width="80px"></td>
           <td><small>{{ $p->nombre }}</small></td>
-          <td>{{ $p->correo }} {{ $p->id }}</td>
+          <td>{{ $p->correo }}</td>
+
           {{-- <td>{{ $p->tipo }}</td> --}}
           {{-- <td>{{ $p->cargo }}</td> --}}
           {{-- <td>{{ $p->ubicacion }}</td> --}}
@@ -45,8 +47,7 @@
 
 @endsection
 @push('js')
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
-
+<script src="{{ asset('assets/jquery.dataTables.js') }}"></script>
 <script>
   $(document).ready( function () {
     $('#datatablesSimple').DataTable();

@@ -18,7 +18,7 @@
     <section class="py-5 text-center container">
         <div class="row py-lg-3">
             <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-light">Módulo de Auto Atención</h1>
+                <h1 class="fw-light">Módulo de autoatención</h1>
                 <img src="{{ asset('pd/img/logo.png') }}" width="100"  alt="">
                 {{-- <p class="lead text-body-secondary">Something short and leading about the collection below—its contents,
                     the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
@@ -41,7 +41,7 @@
               </div>
               <div class="card-body bg-warning">
                 <h4 class="card-text text-center">
-                  <strong>Encuentra tú sala o el área de servicio de la sede</strong>
+                  <strong>Busca salas, laboratorios o áreas de servicio de la sede</strong>
                 </h4>
               </div>
             </div>
@@ -57,7 +57,7 @@
               </div>
               <div class="card-body bg-warning">
                 <h4 class="card-text text-center">
-                  <strong>Encuentra los datos de contacto del docente o de algún colaborador de las sede</strong>
+                  <strong>Busca los datos de contacto de docentes o administrativos de la sede</strong>
                 </h4>
               </div>
             </div>
@@ -73,7 +73,7 @@
               </div>
               <div class="card-body bg-warning">
                 <h4 class="card-text text-center">
-                  <strong>Preguntas frecuentes de las distintas áreas de la sede</strong>
+                  <strong>Revisa las respuestas a tus preguntas de distintas áreas de la sede</strong>
                 </h4>
               </div>
             </div>

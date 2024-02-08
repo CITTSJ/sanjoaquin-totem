@@ -12,7 +12,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <form action="{{ route('admin.personal.update',$p->id) }}" method="POST">
+          <form action="{{ route('admin.personal.update',$p->id) }}" class="form-submit" method="POST">
             @csrf
             @method('PUT')
             <div class="card border-dark">
@@ -42,8 +42,8 @@
                 <div class="mb-3">
                   <label for="mostrar" class="form-label">Mostrar</label>
                   <select class="form-select" name="mostrar" id="mostrar">
-                    <option value="si" {{ $p->mostrar ? 'selected' : '' }}>Si</option>
-                    <option value="no" {{ $p->mostrar ? '' : 'selected' }}>No</option>
+                    <option value="on" {{ $p->mostrar ? 'selected' : '' }}>Si</option>
+                    <option value="off" {{ $p->mostrar ? '' : 'selected' }}>No</option>
                   </select>
                 </div>
                 <div class="text-end">
@@ -54,21 +54,43 @@
           </form>
         </div>
         <div class="col-md-6">
-          <form action="{{ route('admin.personal.update',$p->id) }}" method="POST">
-            @csrf
-            @method('PUT')
-            <div class="card border-dark">
-              <div class="card-body">
-                <div class="mb-3">
-                  <label for="" class="form-label">Imagen</label>
-                  <input type="file" class="form-control" name="" id="" placeholder=""/>
-                </div>
-                <div class="text-end">
-                  <button type="submit" class="btn btn-primary">Guardar</button>
-                </div>
+          <div class="container">
+            <div class="d-flex justify-content-center">
+              <div class="card mb-3">
+                <img src="{{ asset($p->getPhoto()) }}" width="100px" alt="">
               </div>
             </div>
-          </form>
+            <div class="row">
+              <form action="{{ route('admin.personal.update.img',$p->id) }}" class="form-submit" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="card border-dark">
+                  <div class="card-body">
+
+                    <div class="mb-3">
+                      <label class="form-label" for="image">Imagen<label>
+                    </div>
+                    <div class="mb-3">
+                      <input type="file" class="form-control" name="image" accept="image/*" onchange="preview(this)" />
+                    </div>
+
+
+                    <div class="d-flex justify-content-center">
+                      <div id="preview"></div>
+                    </div>
+{{--
+                    <div class="mb-3">
+                      <label for="" class="form-label">Imagen</label>
+                      <input type="file" class="form-control" name="image" id="" placeholder=""/>
+                    </div> --}}
+                    <div class="text-end">
+                      <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -77,5 +99,6 @@
 
 @endsection
 @push('js')
+<script src="{{ asset('admin/js/preview.js') }}"></script>
 
 @endpush

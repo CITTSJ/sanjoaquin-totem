@@ -12,6 +12,11 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+  public function acceso() {
+    return view('auth.index');
+  }
+
+
   public function index() {
     return view('pd.index');
   }

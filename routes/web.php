@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\ConsultaController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\PD\AdminController;
 use App\Http\Controllers\PD\FaqController;
@@ -17,7 +18,7 @@ Route::get('faq', [PDHomeController::class, 'faq'])->name('faq');
 Route::get('sector', [PDHomeController::class, 'sector'])->name('sector');
 
 
-Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::get('login', [AuthController::class, 'acceso'])->name('acceso');
 Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::any('logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -36,3 +37,8 @@ Route::middleware('auth.user')->group( function () {
   Route::get('admin/faq_eliminado', [FaqController::class, 'indexDelete'])->name('admin.faq.indexDelete');
   Route::resource('admin/faq', FaqController::class)->names('admin.faq');
 });
+
+
+// API
+Route::get('api/v1/buscar-sector', [ConsultaController::class, 'buscarSector'])->name('api.v1.buscarSector');
+Route::get('api/v1/buscar-sectores', [ConsultaController::class, 'buscarSectores'])->name('api.v1.buscarSectores');

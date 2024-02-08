@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Plantilla Didactica</title>
+    <meta name="author" content="bemtorres" />
+    <title>Plantilla Didáctica</title>
+    <link rel="shortcut icon" href="{{ asset('favicon.svg') }}" type="image/x-icon">
     <link href="{{ asset('admin/css/styles.css') }}" rel="stylesheet" />
     <script src="{{ asset('assets/fontawesome-all.js') }}" crossorigin="anonymous"></script>
     {{-- <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script> --}}

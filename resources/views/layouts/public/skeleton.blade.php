@@ -3,10 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Planilla Didactica</title>
+  <title>Planilla Didáctica</title>
+  <link rel="shortcut icon" href="{{ asset('favicon.svg') }}" type="image/x-icon">
   <link rel="stylesheet" href="{{ asset('assets/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/select2.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/select2-bootstrap-5-theme.min.css') }}">
+  @laravelPWA
   <style>
     body {
         /* background: #04243c; */

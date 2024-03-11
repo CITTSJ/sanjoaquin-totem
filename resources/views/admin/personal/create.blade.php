@@ -10,7 +10,7 @@
   <div class="card-body table-resonsive">
     <div class="container">
       <div class="row">
-        <form action="{{ route('admin.personal.store') }}" method="POST" class="form-submit" enctype="multipart/form-data" class="form-submit">
+        <form action="{{ route('admin.personal.store') }}" method="POST" class="form-submit" enctype="multipart/form-data">
           @csrf
           <div class="col-md-6">
             <div class="card border-primary">
@@ -24,11 +24,15 @@
                   <input type="email" class="form-control" name="email" required>
                 </div>
                 <div class="mb-3">
-                  <label for="tipo" class="form-label">Tipo</label>
+                  <label for="nombre" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" name="nombre" required>
+                </div>
+                <div class="mb-3">
+                  <label for="puesto" class="form-label">Tipo</label>
                   {{-- <select class="form-select form-select-lg" name="tipo" id="tipo"> --}}
-                    <select class="form-select" name="tipo" id="tipo">
-                    <option value="Administrativo/Colaborador">Administrativo/Colaborador</option>
-                    <option value="Docente">Docente</option>
+                    <select class="form-select" name="puesto" id="puesto">
+                      <option value="Docente">Docente</option>
+                      <option value="Administrativo/Colaborador">Administrativo/Colaborador</option>
                   </select>
                 </div>
                 {{-- <div class="mb-3">

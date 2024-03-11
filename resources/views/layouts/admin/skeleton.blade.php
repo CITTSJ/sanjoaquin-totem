@@ -9,6 +9,7 @@
     <title>Plantilla Didáctica</title>
     <link rel="shortcut icon" href="{{ asset('favicon.svg') }}" type="image/x-icon">
     <link href="{{ asset('admin/css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/toastify/toastify.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('assets/fontawesome-all.js') }}" crossorigin="anonymous"></script>
     {{-- <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script> --}}
     @stack('css')
@@ -35,6 +36,11 @@
     <script src="{{ asset('assets/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('admin/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/Chart.min.js') }}"></script>
+    <script src="{{ asset('assets/toastify/toastify-js.js') }}"></script>
+    <script src="{{ asset('assets/custom.js') }}"></script>
+
+    @include('components._toastify')
+
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script> --}}
     {{-- <script src="assets/demo/chart-area-demo.js"></script> --}}
     {{-- <script src="assets/demo/chart-bar-demo.js"></script> --}}

@@ -24,31 +24,32 @@ class PersonalController extends Controller
   }
 
   public function store(Request $request) {
-    $p = new Personal();
+    try {
+      $p = new Personal();
 
-    $nombre = $request->input('nombre');
-    $correo = $request->input('email');
-    $puesto = $request->input('puesto');
-    $mostrar = $request->input('mostrar') == 'on' ? true : false;
+      $p->nombre = $request->input('nombre');
+      $p->correo = $request->input('email');
+      $p->puesto = $request->input('puesto');
+      // $p->tipo = $request->input('tipo');
+      $p->mostrar = true;
 
-    $p->nombre = $nombre;
-    $p->correo = $correo;
-    $p->puesto = $puesto;
-    $p->mostrar = $mostrar;
+      if(!empty($request->file('image'))){
+        $request->validate([
+          'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-    if(!empty($request->file('image'))){
-      $request->validate([
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-      ]);
+        $filename = time();
+        $folder = 'public/assets/personal/';
+        $p->imagen = ImportImage::save($request, 'image', $filename, $folder);
+      }
 
-      $filename = time();
-      $folder = 'public/assets/personal/';
-      $p->imagen = ImportImage::save($request, 'image', $filename, $folder);
+      return $request;
+      $p->save();
+
+      return redirect()->route('admin.personal.index')->with('success', 'Personal creado correctamente');
+    } catch (\Throwable $th) {
+      return back()->with('error', 'Error al crear personal');
     }
-
-    $p->save();
-
-    return redirect()->route('admin.personal.index')->with('success', 'Personal creado correctamente');
   }
 
   public function edit($id) {

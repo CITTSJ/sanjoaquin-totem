@@ -32,7 +32,7 @@
               <div class="card-body">
                 <h4 class="card-title text-center"><strong>Acceso Plantilla Didáctica</strong></h4>
                 {{-- <p class="card-text">Text</p> --}}
-                <form action="{{ route('login') }}" method="POST">
+                <form action="{{ route('login') }}" method="POST"  class="form-submit">
                   @csrf
                   <div class="mb-3">
                     <label for="username" class="form-label">Correo</label>

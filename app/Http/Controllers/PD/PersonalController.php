@@ -43,7 +43,6 @@ class PersonalController extends Controller
         $p->imagen = ImportImage::save($request, 'image', $filename, $folder);
       }
 
-      return $request;
       $p->save();
 
       return redirect()->route('admin.personal.index')->with('success', 'Personal creado correctamente');
@@ -63,6 +62,7 @@ class PersonalController extends Controller
     $p->correo = $request->input('email');
     $p->puesto = $request->input('puesto');
     $p->mostrar = $request->input('mostrar') == 'on' ? true : false;
+
     $p->update();
 
     return back()->with('success', 'Personal actualizado correctamente');

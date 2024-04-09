@@ -47,7 +47,7 @@
             Módulo de autoatención
           </h1>
           <div class="bg-warning pt-2 text-center pb-1">
-            <p class="text-dark">Encuentra tu sala o Area de la sede</p>
+            <p class="text-dark">Encuentra tu sala o área de la sede</p>
           </div>
           <img src="{{ asset('pd/img/logo.png') }}" class="mt-1" width="100"  alt="">
         </div>

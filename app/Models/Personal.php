@@ -37,6 +37,7 @@ class Personal extends Model
       'imagen' => asset($this->getPhoto()),
       'puesto' => $this->puesto,
       'ubicacion' => $this->ubicacion,
+      'jefatura' => $this->jefatura,
     ];
   }
 

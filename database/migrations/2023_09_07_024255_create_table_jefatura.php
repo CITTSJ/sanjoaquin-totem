@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reporte', function (Blueprint $table) {
-            $table->id();
-            $table->string('accion')->nullable();
-            $table->string('ruta')->nullable();
-            $table->timestamps();
-        });
-
+      Schema::create('jefatura', function (Blueprint $table) {
+          $table->id();
+          $table->string('nombre')->nullable();
+          $table->string('descripcion')->nullable();
+          $table->string('glosa')->nullable();
+          $table->boolean('mostrar')->default(true);
+          $table->timestamps();
+      });
 
     }
 

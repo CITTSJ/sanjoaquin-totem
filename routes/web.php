@@ -14,6 +14,7 @@ Route::get('/', [AuthController::class, 'index'])->name('root');
 
 // Route::get('/', [PDHomeController::class, 'index'])->name('root');
 Route::get('personal', [PDHomeController::class, 'personal'])->name('personal');
+Route::get('personal2', [PDHomeController::class, 'personal2'])->name('personal2');
 Route::get('faq', [PDHomeController::class, 'faq'])->name('faq');
 Route::get('sector', [PDHomeController::class, 'sector'])->name('sector');
 

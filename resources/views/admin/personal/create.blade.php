@@ -35,6 +35,15 @@
                       <option value="Administrativo/Colaborador">Administrativo/Colaborador</option>
                   </select>
                 </div>
+
+                <div class="mb-3">
+                  <label for="jefatura" class="form-label">Jefatura</label>
+                  <select class="form-select" name="jefatura" id="jefatura">
+                    @foreach ($jefaturas as $jefatura)
+                      <option value="{{ $jefatura->id }}">{{ $jefatura->nombre }}</option>
+                    @endforeach
+                  </select>
+                </div>
                 {{-- <div class="mb-3">
                   <label for="" class="form-label">Imagen</label>
                   <input type="file" class="form-control" name="" id="" placeholder=""/>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\PD;
 
 use App\Http\Controllers\Controller;
+use App\Models\Jefatura;
 use App\Models\Personal;
 use App\Services\ImportImage;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use Illuminate\Http\Request;
 class PersonalController extends Controller
 {
   public function index() {
-    $personals = Personal::where('mostrar', true)->get();
+    $personals = Personal::where('mostrar', true)->with('jefatura')->get();
     return view('admin.personal.index', compact('personals'));
   }
 
@@ -20,7 +21,9 @@ class PersonalController extends Controller
   }
 
   public function create() {
-    return view('admin.personal.create');
+    $jefaturas = Jefatura::orderBy('nombre')->get();
+
+    return view('admin.personal.create', compact('jefaturas'));
   }
 
   public function store(Request $request) {
@@ -30,6 +33,7 @@ class PersonalController extends Controller
       $p->nombre = $request->input('nombre');
       $p->correo = $request->input('email');
       $p->puesto = $request->input('puesto');
+      $p->jefatura_id = $request->input('jefatura');
       // $p->tipo = $request->input('tipo');
       $p->mostrar = true;
 
@@ -53,12 +57,15 @@ class PersonalController extends Controller
 
   public function edit($id) {
     $p = Personal::findOrFail($id);
-    return view('admin.personal.edit', compact('p'));
+    $jefaturas = Jefatura::orderBy('nombre')->get();
+
+    return view('admin.personal.edit', compact('p', 'jefaturas'));
   }
 
   public function update(Request $request, $id) {
     $p = Personal::findOrFail($id);
     $p->nombre = $request->input('nombre');
+    $p->jefatura_id = $request->input('jefatura');
     $p->correo = $request->input('email');
     $p->puesto = $request->input('puesto');
     $p->mostrar = $request->input('mostrar') == 'on' ? true : false;

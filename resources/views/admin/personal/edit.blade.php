@@ -46,6 +46,14 @@
                     <option value="off" {{ $p->mostrar ? '' : 'selected' }}>No</option>
                   </select>
                 </div>
+                <div class="mb-3">
+                  <label for="jefatura" class="form-label">Jefatura</label>
+                  <select class="form-select" name="jefatura" id="jefatura">
+                    @foreach ($jefaturas as $jefatura)
+                      <option value="{{ $jefatura->id }}" {{ $p->jefatura_id == $jefatura->id ? 'selected' : '' }}>{{ $jefatura->nombre }}</option>
+                    @endforeach
+                  </select>
+                </div>
                 <div class="text-end">
                   <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>

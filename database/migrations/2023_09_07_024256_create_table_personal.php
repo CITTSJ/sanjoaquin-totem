@@ -21,10 +21,11 @@ return new class extends Migration
             $table->string('run')->nullable();
             $table->string('tipo')->nullable();
             $table->string('nombre')->nullable();
+            $table->string('apellido')->nullable();
             $table->string('correo')->nullable();
             $table->string('cargo')->nullable();
             $table->string('ubicacion')->nullable();
-            $table->integer('jefatura')->nullable();
+            $table->integer('jefatura_id')->nullable();
             $table->string('puesto')->nullable();
             $table->string('imagen')->nullable();
             $table->boolean('mostrar')->default(true);
@@ -39,8 +40,11 @@ return new class extends Migration
 
         foreach ($personales as $p) {
           // $p->nombre = Str::replace('-',' ',$p->run);
-          $p->correo = Str::upper(trim($p->correo));
-          $p->nombre = Str::ucfirst($p->nombre);
+          // split nombre
+          $p->nombre = Str::ucfirst(Str::lower(explode(' ', $p->nombre)[0]));
+          $p->apellido = Str::ucfirst(Str::lower($p->apellido));
+          // $p->nombre = Str::ucfirst($p->nombre);
+          $p->correo = Str::lower(trim($p->correo));
           if ($p->imagen == 'image.png') {
             $p->imagen = null;
           }

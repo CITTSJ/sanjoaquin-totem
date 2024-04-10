@@ -28,16 +28,20 @@ class Personal extends Model
     return (new Imagen($img, $folder, $imgDefault))->call();
   }
 
+  public function jefatura() {
+    return $this->belongsTo(Jefatura::class, 'jefatura_id');
+  }
+
   public function get_raw() {
     return [
       'id' => $this->id,
-      'nombre' => $this->nombre,
+      'nombre' => $this->nombre . ' ' . $this->apellido,
       'cargo' => $this->cargo,
       'correo' => $this->correo,
       'imagen' => asset($this->getPhoto()),
       'puesto' => $this->puesto,
       'ubicacion' => $this->ubicacion,
-      'jefatura' => $this->jefatura,
+      'jefatura' => $this->jefatura_id,
     ];
   }
 

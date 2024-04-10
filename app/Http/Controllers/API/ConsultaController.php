@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
+use App\Models\Personal;
 use App\Models\Sector;
 use Auth;
 use Illuminate\Http\Request;
@@ -37,6 +39,33 @@ class ConsultaController extends Controller
     }
   }
 
+  public function export() {
+
+    // $sectores = Sector::get();
+
+    // $sectores = $sectores->map(function ($sector) {
+    //   return $sector->get_raw();
+    // });
+
+
+    // return response()->json($sectores, 404);
+
+    // $usuarios = Personal::get();
+
+    // $sectores = $usuarios->map(function ($sector) {
+    //   return $sector->get_raw();
+    // });
+
+
+    $faqs = Faq::get();
+
+    // $sectores = $faqs->map(function ($sector) {
+    //   return $sector->get_raw();
+    // });
+
+
+    return response()->json($faqs, 404);
+  }
 
   // PRIVATE
 

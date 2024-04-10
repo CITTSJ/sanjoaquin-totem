@@ -35,7 +35,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-            <form action="{{ route('admin.sector.update',$s->id) }}" method="POST">
+            <form action="{{ route('admin.sector.update',$s->id) }}" class="form-submit" method="POST">
               @csrf
               @method('PUT')
             <div class="card border-primary">

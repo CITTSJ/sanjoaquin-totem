@@ -14,6 +14,7 @@ Route::get('/', [AuthController::class, 'index'])->name('root');
 
 // Route::get('/', [PDHomeController::class, 'index'])->name('root');
 Route::get('personal', [PDHomeController::class, 'personal'])->name('personal');
+Route::get('personal2', [PDHomeController::class, 'personal2'])->name('personal2');
 Route::get('faq', [PDHomeController::class, 'faq'])->name('faq');
 Route::get('sector', [PDHomeController::class, 'sector'])->name('sector');
 
@@ -42,3 +43,4 @@ Route::middleware('auth.user')->group( function () {
 // API
 Route::get('api/v1/buscar-sector', [ConsultaController::class, 'buscarSector'])->name('api.v1.buscarSector');
 Route::get('api/v1/buscar-sectores', [ConsultaController::class, 'buscarSectores'])->name('api.v1.buscarSectores');
+Route::get('api/v1/export', [ConsultaController::class, 'export'])->name('api.v1.export');

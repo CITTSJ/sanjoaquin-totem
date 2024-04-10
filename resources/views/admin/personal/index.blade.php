@@ -21,6 +21,7 @@
           <th>NOMBRE</th>
           <th>CORREO</th>
           <th>PUESTO</th>
+          <th>JEFATURA</th>
           <th></th>
         </tr>
       </thead>
@@ -28,13 +29,14 @@
         @foreach ($personals as $p)
         <tr>
           <td><img src="{{ asset($p->getPhoto()) }}" alt="" width="80px"></td>
-          <td><small>{{ $p->nombre }}</small></td>
+          <td><small>{{ $p->nombre . ' ' . $p->apellido }}</small></td>
           <td>{{ $p->correo }}</td>
 
           {{-- <td>{{ $p->tipo }}</td> --}}
           {{-- <td>{{ $p->cargo }}</td> --}}
           {{-- <td>{{ $p->ubicacion }}</td> --}}
           <td>{{ $p->puesto }}</td>
+          <td>{{ $p->jefatura->nombre }}</td>
           <td>
             <a href="{{ route('admin.personal.edit', $p->id ) }}" class="btn btn-sm btn-warning">Editar</a>
           </td>

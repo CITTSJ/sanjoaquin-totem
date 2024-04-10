@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\PD;
 
 use App\Http\Controllers\Controller;
+use App\Models\Jefatura;
 use App\Models\Personal;
 use App\Services\ImportImage;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use Illuminate\Http\Request;
 class PersonalController extends Controller
 {
   public function index() {
-    $personals = Personal::where('mostrar', true)->get();
+    $personals = Personal::where('mostrar', true)->with('jefatura')->get();
     return view('admin.personal.index', compact('personals'));
   }
 
@@ -20,48 +21,55 @@ class PersonalController extends Controller
   }
 
   public function create() {
-    return view('admin.personal.create');
+    $jefaturas = Jefatura::orderBy('nombre')->get();
+
+    return view('admin.personal.create', compact('jefaturas'));
   }
 
   public function store(Request $request) {
-    $p = new Personal();
+    try {
+      $p = new Personal();
 
-    $nombre = $request->input('nombre');
-    $correo = $request->input('email');
-    $puesto = $request->input('puesto');
-    $mostrar = $request->input('mostrar') == 'on' ? true : false;
+      $p->nombre = $request->input('nombre');
+      $p->correo = $request->input('email');
+      $p->puesto = $request->input('puesto');
+      $p->jefatura_id = $request->input('jefatura');
+      // $p->tipo = $request->input('tipo');
+      $p->mostrar = true;
 
-    $p->nombre = $nombre;
-    $p->correo = $correo;
-    $p->puesto = $puesto;
-    $p->mostrar = $mostrar;
+      if(!empty($request->file('image'))){
+        $request->validate([
+          'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-    if(!empty($request->file('image'))){
-      $request->validate([
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-      ]);
+        $filename = time();
+        $folder = 'public/assets/personal/';
+        $p->imagen = ImportImage::save($request, 'image', $filename, $folder);
+      }
 
-      $filename = time();
-      $folder = 'public/assets/personal/';
-      $p->imagen = ImportImage::save($request, 'image', $filename, $folder);
+      $p->save();
+
+      return redirect()->route('admin.personal.index')->with('success', 'Personal creado correctamente');
+    } catch (\Throwable $th) {
+      return back()->with('error', 'Error al crear personal');
     }
-
-    $p->save();
-
-    return redirect()->route('admin.personal.index')->with('success', 'Personal creado correctamente');
   }
 
   public function edit($id) {
     $p = Personal::findOrFail($id);
-    return view('admin.personal.edit', compact('p'));
+    $jefaturas = Jefatura::orderBy('nombre')->get();
+
+    return view('admin.personal.edit', compact('p', 'jefaturas'));
   }
 
   public function update(Request $request, $id) {
     $p = Personal::findOrFail($id);
     $p->nombre = $request->input('nombre');
+    $p->jefatura_id = $request->input('jefatura');
     $p->correo = $request->input('email');
     $p->puesto = $request->input('puesto');
     $p->mostrar = $request->input('mostrar') == 'on' ? true : false;
+
     $p->update();
 
     return back()->with('success', 'Personal actualizado correctamente');

@@ -45,9 +45,9 @@
                 </h4>
               </div>
             </div>
-            <p class="text-dark text-center mt-2">
+            {{-- <p class="text-dark text-center mt-2">
               Pincha aquí y encuentra tu sala, laboratorio o taller.
-            </p>
+            </p> --}}
           </div>
 
           <div class="col">
@@ -61,9 +61,9 @@
                 </h4>
               </div>
             </div>
-            <p class="text-dark text-center mt-2">
+            {{-- <p class="text-dark text-center mt-2">
               Pincha aquí y encuentra el correo de tu docente o de algún colaborador.
-            </p>
+            </p> --}}
           </div>
 
           <div class="col">
@@ -77,9 +77,9 @@
                 </h4>
               </div>
             </div>
-            <p class="text-dark text-center mt-2">
+            {{-- <p class="text-dark text-center mt-2">
               Pincha aquí y encuentra las respuestas a tus preguntas frecuentes.
-            </p>
+            </p> --}}
           </div>
         </div>
       </div>

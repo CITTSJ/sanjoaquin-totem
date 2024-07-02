@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('nombre')->nullable();
             $table->string('imagen')->nullable();
             $table->string('piso')->nullable();
+            $table->boolean('is_local')->nullable()->default(false);
             $table->string('descripcion')->nullable();
             $table->boolean('mostrar')->default(true);
             $table->boolean('activo')->default(true);
@@ -34,6 +35,7 @@ return new class extends Migration
 
         foreach ($sectores as $s) {
           $s->nombre = Str::replace('_',' ',$s->nombre);
+          $s->is_local = true;
           $s->update();
         }
     }

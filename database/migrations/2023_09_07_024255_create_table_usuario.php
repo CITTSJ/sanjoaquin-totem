@@ -35,9 +35,19 @@ return new class extends Migration
         $u->apellido_paterno = 'Mujica';
         $u->apellido_materno = 'Cornejo';
         $u->correo = 'hmujica@duoc.cl';
-        $u->password = hash('sha256', 'hmujica2023');
+        $u->password = hash('sha256', 'hmujicaduoc');
         $u->tipo_usuario = 1;
         $u->save();
+
+        $u = new Usuario();
+        $u->nombre = 'Administrador';
+        $u->apellido_paterno = 'plantilla';
+        $u->apellido_materno = 'didactica';
+        $u->correo = 'admin@duoc.cl';
+        $u->password = hash('sha256', 'adminduoc001');
+        $u->tipo_usuario = 1;
+        $u->save();
+
 
         // $faker = FakerFactory::create();
 

@@ -83,13 +83,23 @@
             if (dato.jefatura != id_jefatura) {
                 return;
             }
+            var name = dato.nombre;
+            var addHtml = '';
+            if (dato.cargo == "ADMINISTRATIVO") {
+              name = dato.name_short;
+              addHtml =   `<br><small style="font-size: 12px;"><strong>${dato.puesto}</strong></small> `;
+            }
+
+            console.log(dato);
             const cardHTML = `
                 <div class="col-md-3 mb-3">
-                    <div class="card clickable-card card-personal" style="" onclick="handleJefatura(${dato.jefatura})">
+                    <div class="card clickable-card card-personal" style="">
                       <img src="${dato.imagen}" class="card-img-top" alt="Foto de Perfil">
-                      <div class="card-body text-center">
-                        <small><strong>${dato.nombre}</strong></small>
+
+                      <div class="card-footer text-center">
+                        <small><strong>${dato.nombre}</strong></small> <br>
                         <small style="font-size: 12px;">${dato.correo}</small>
+                        ${addHtml}
                       </div>
                     </div>
                 </div>`;

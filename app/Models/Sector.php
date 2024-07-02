@@ -20,10 +20,16 @@ class Sector extends Model
 
     $img = $this->imagen;
 
-    if (strpos($this->imagen, "image") !== false) {
+    // if (strpos($this->imagen, "image") !== false) {
+    //   $imgDefault = $folder_default.$this->imagen;
+    //   $img = null;
+    // }
+
+    if ($this->is_local) {
       $imgDefault = $folder_default.$this->imagen;
       $img = null;
     }
+
     return (new Imagen($img, $folder, $imgDefault))->call();
   }
 

@@ -15,16 +15,28 @@ class Personal extends Model
 
   public function getPhoto(){
     $folder = "assets/personal";
-    $folder_default = "pd/img/media/";
+    $folder_default = "pd/img/personal/";
     $imgDefault = $folder_default.'default.png';
 
     $img = $this->imagen;
 
-    if (strpos($this->imagen, "image") !== false) {
+    // si tiene la palabra local
+    if (strpos($this->imagen, "local") !== false) {
       // $folder = $folder_default.$this->imagen;
-      $imgDefault = $folder_default.$this->imagen;
+
+      // separa por -
+      $img = explode('-', $this->imagen);
+
+      $imgDefault = $folder_default.$img[1];
       $img = null;
     }
+
+    // if (strpos($this->imagen, "local") !== false) {
+    //   // $folder = $folder_default.$this->imagen;
+
+    //   $imgDefault = $folder_default.$this->imagen;
+    //   $img = null;
+    // }
     return (new Imagen($img, $folder, $imgDefault))->call();
   }
 
@@ -36,6 +48,7 @@ class Personal extends Model
     return [
       'id' => $this->id,
       'nombre' => $this->nombre . ' ' . $this->apellido,
+      'name_short' => explode(' ',$this->name)[0] . ' ' . explode(' ',$this->apellido)[0],
       'cargo' => $this->cargo,
       'correo' => $this->correo,
       'imagen' => asset($this->getPhoto()),

@@ -42,12 +42,31 @@ return new class extends Migration
           // $p->nombre = Str::replace('-',' ',$p->run);
           // split nombre
           $p->nombre = Str::ucfirst(Str::lower(explode(' ', $p->nombre)[0]));
-          $p->apellido = Str::ucfirst(Str::lower($p->apellido));
+          // $p->apellido = Str::ucfirst(Str::lower($p->apellido));
+          $p->apellido = Str::ucfirst(Str::lower(explode(' ', $p->apellido)[0]));
           // $p->nombre = Str::ucfirst($p->nombre);
           $p->correo = Str::lower(trim($p->correo));
-          if ($p->imagen == 'image.png') {
+
+
+          // if
+
+          if ($p->imagen > 0) {
+            if ($p->imagen >= 10000) {
+              $p->imagen = 'local-' . $p->imagen . '.png';
+            } else {
+              $p->imagen = 'local-' . $p->imagen . '.jpg';
+            }
+          }
+
+          if ($p->imagen == 0) {
             $p->imagen = null;
           }
+
+
+
+          // if ($p->imagen == 'image.png') {
+          //   $p->imagen = null;
+          // }
           $p->update();
         }
     }

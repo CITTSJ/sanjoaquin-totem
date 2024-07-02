@@ -74,8 +74,8 @@
                           <!-- zoomist-image is required -->
                           {{-- <div class="zoomist-image"> --}}
                             <!-- you can add anything you want to zoom here. -->
-                            <a href="{{ asset('pd/img/media/image1.png') }}" id="a_imagen" data-fancybox="gallery" data-caption="Single image">
-                              <img src="{{ asset('pd/img/media/image1.png') }}" id="p_imagen" class="rounded img-responsive shadow-lg" style="width: 100%; height: 360px;" alt="">
+                            <a href="{{ asset('pd/img/media/piso2.png') }}" id="a_imagen" data-fancybox="gallery" data-caption="Single image">
+                              <img src="{{ asset('pd/img/media/piso2.png') }}" id="p_imagen" class="rounded img-responsive shadow-lg" style="width: 100%; height: 100%;" alt="">
                             </a>
 
                           {{-- </div> --}}
@@ -170,6 +170,6 @@
       }
 
 
-      // handleFind();
+      handleFind();
     </script>
 @endpush

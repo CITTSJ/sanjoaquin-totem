@@ -8,30 +8,74 @@
 
 <style>
   .zoomist-container {
-  width: 100%;
-  max-width: 800px;
-  height: 400px;
-}
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+  }
 
-.zoomist-image {
-  width: 100%;
-  aspect-ratio: 1;
-}
+  .zoomist-image {
+    width: 100%;
+    aspect-ratio: 1;
+  }
 
-.zoomist-image img {
-  width: 100%;
-  /* height: 400px; */
-  object-fit: cover;
-  object-position: center;
-}
+  .zoomist-image img {
+    width: 100%;
+    /* height: 400px; */
+    object-fit: cover;
+    object-position: center;
+  }
 
-.select2-container .select2-selection--single {
-  height: 40px;
-  font-size: 20px;
-  align-content: center;
-  justify-items: center;
-  justify-content: center;
-}
+  .select2-container .select2-selection--single {
+    height: 40px;
+    font-size: 20px;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+  }
+
+  #p_imagen {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+  }
+
+  /* Nueva clase para ocultar la imagen */
+  #p_imagen.hidden {
+    opacity: 0;
+  }
+
+  /* Estilos del esqueleto de carga */
+  .skeleton {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    background-image: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    animation: loading 1s infinite;
+  }
+
+  @keyframes loading {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 0; }
+  }
+
+  /* Opcional: añadir una clase para mostrar el esqueleto */
+  .image-skeleton {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .image-skeleton .skeleton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .image-skeleton img {
+    z-index: 2;
+  }
 </style>
 @endpush
 
@@ -56,10 +100,8 @@
 
     <div class="py-3 bg-body-tertiary">
       <div class="container">
-
         <div class="col-md-12 row">
           {{-- <a class="btn btn-secondary col-1" href="{{ route('root') }}">Volver</a> --}}
-
         </div>
         <div class="col-md-12 mt-2">
           <div class="card text-white bg-secondary">
@@ -68,19 +110,12 @@
                 <div class="row">
                   <div class="col-7">
                     <div class="text-center">
-                      {{-- <div class="zoomist-container"> --}}
-                        <!-- zoomist-wrapper is required -->
-                        {{-- <div class="zoomist-wrapper"> --}}
-                          <!-- zoomist-image is required -->
-                          {{-- <div class="zoomist-image"> --}}
-                            <!-- you can add anything you want to zoom here. -->
-                            <a href="{{ asset('pd/img/media/piso2.png') }}" id="a_imagen" data-fancybox="gallery" data-caption="Single image">
-                              <img src="{{ asset('pd/img/media/piso2.png') }}" id="p_imagen" class="rounded img-responsive shadow-lg" style="width: 100%; height: 100%;" alt="">
-                            </a>
-
-                          {{-- </div> --}}
-                        {{-- </div> --}}
-                      {{-- </div> --}}
+                      <div class="image-skeleton" id="image-container">
+                        <div class="skeleton"></div>
+                        <a href="{{ asset('pd/img/sector/template.png') }}" id="a_imagen" data-fancybox="gallery" data-caption="Single image">
+                          <img src="{{ asset('pd/img/sector/template.png') }}" id="p_imagen" class="rounded img-responsive shadow-lg" style="width: 100%; height: 100%;" alt="">
+                        </a>
+                      </div>
                     </div>
                   </div>
                   <div class="col">
@@ -114,62 +149,57 @@
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
   </main>
 @endsection
+
 @push('js')
   {{-- <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script> --}}
   <script src="{{ asset('assets/fancybox.umd.js')}}"></script>
 
-    {{-- <script src="https://cdn.jsdelivr.net/npm/zoomist@2/zoomist.umd.js"></script> --}}
-    <script>
-      // const zoomist = new Zoomist(
-      //   '.zoomist-container', {
-      //   // Optional parameters
-      //   // maxScale: 4,
-      //   // bounds: true,
-      //   // if you need slider
-      //   slider: true,
-      //   // if you need zoomer
-      //   zoomer: true
-      // }
-      // );
+  {{-- <script src="https://cdn.jsdelivr.net/npm/zoomist@2/zoomist.umd.js"></script> --}}
+  <script>
+    Fancybox.bind('[data-fancybox="gallery"]', {});
 
-      Fancybox.bind('[data-fancybox="gallery"]', {
+    var sectores = @json($raw_sectores);
+
+    $(document).ready(function() {
+      $('.js-basic-single').select2({
+        allowClear: true,
+        width: 'resolve'
       });
 
-      Fancybox.getSlide()?.panzoom.zoomIn();
-
-      var sectores = @json($raw_sectores);
-
-      $(document).ready(function() {
-        $('.js-basic-single').select2({
-          allowClear: true,
-          width: 'resolve'
-        });
-
-      });
-
-      function handleFind() {
-        var id = $('#select_sector').val();
-        var sector = sectores.find(p => p.id == id);
-
-        $('#p_imagen').attr('src', sector.imagen);
-        $('#a_imagen').attr('href', sector.imagen);
-        // $('#p_nombre').html(personal.nombre);
-        // $('#p_puesto').html(personal.puesto);
-        // $('#p_correo').html(personal.correo);
-        // $('#p_cargo').html(personal.cargo);
-        $('#p_piso').html(sector.piso);
-        $('#p_ubicacion').html(sector.ubicacion);
-        // $('#p_descripcion').html(sector.descripcion);
-      }
-
-
+      // Llamar a handleFind() en el inicio para asegurar que se muestren los datos del primer sector
       handleFind();
-    </script>
+    });
+
+    function handleFind() {
+      var id = $('#select_sector').val();
+      var sector = sectores.find(p => p.id == id);
+
+      // Referencia al contenedor de la imagen y a la imagen
+      var container = $('#image-container');
+      var imagen = $('#p_imagen');
+
+      // Aplicar la clase que oculta la imagen actual y mostrar el esqueleto de carga
+      imagen.addClass('hidden');
+      container.find('.skeleton').show();
+
+      // Cambiar la imagen después de un breve retraso
+      setTimeout(function() {
+        imagen.attr('src', sector.imagen);
+        $('#a_imagen').attr('href', sector.imagen);
+
+        // Ocultar el esqueleto de carga y mostrar la nueva imagen
+        container.find('.skeleton').hide();
+        imagen.removeClass('hidden');
+      }, 500); // Tiempo debe coincidir con la duración de la transición
+
+      // Actualizar los detalles del sector
+      $('#p_piso').html(sector.piso);
+      $('#p_ubicacion').html(sector.ubicacion);
+    }
+  </script>
 @endpush

@@ -23,12 +23,12 @@ INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Taller
 INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Taller de Maquinaria','Taller_Lab._De_Inyección_TMM_05','Piso -1','Centro Tecnológico de Maquinaria','-1/TMM05.png');
 INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Taller de Maquinaria','Pañol_Maquinaria','Piso -1','Centro Tecnológico de Maquinaria Pañol','-1/PAÑOL2MAQYMANT.png');
 INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Oficinas','Sala_de_Primeros_Auxilios','Piso -1','Sala de Primeros Auxilio','-1/PRIMEROSAUXILIOS.png');
--- INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Oficinas','Capilla_Sede','Piso 1','Capilla Sede','image26.jpg');
--- INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Oficinas','Centro_Servicios_Académicos','Piso 1','Centro de Servicios Académicos','image27.jpg');
--- INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Oficinas','Financiamiento_y_Dara','Piso 1','Financiamiento y Dara','image28.jpg');
--- INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Salas','Sala_101','Piso 1','Sala 101','image29.jpg');
--- INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Oficinas','Caja','Piso 1','Caja Sede','image30.jpg');
--- INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Oficinas','Pastoral_y_Punto_Estudiantil','Piso 1','Pastoral y Punto Estudiantil','image31.jpg');
+INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Oficinas','Capilla_Sede','Piso 1','Capilla Sede','1/capilla.png');
+INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Oficinas','Centro_Servicios_Académicos','Piso 1','Centro de Servicios Académicos','1/centroacademico.png');
+INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Oficinas','Financiamiento_y_Dara','Piso 1','Financiamiento y Dara','1/financiamiento.png');
+INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Salas','Sala_101','Piso 1','Sala 101','1/101.png');
+INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Oficinas','Caja','Piso 1','Caja Sede','1/caja.png');
+INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Oficinas','Pastoral_y_Punto_Estudiantil','Piso 1','Pastoral y Punto Estudiantil','1/pastoral.png');
 INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Oficinas','Auditorio','Piso 2','Auditorio','auditorio.png');
 INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Oficinas','Centro_Fotocopiado','Piso 2','Centro Fotocopiado','centrofotocopiado.png');
 INSERT INTO sector (ubicacion, nombre, piso, descripcion, imagen) VALUES('Oficinas','Biblioteca','Piso 2','Biblioteca','biblioteca.png');
